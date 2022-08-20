@@ -65,7 +65,7 @@ const App = () => {
     );
   }
 
-  // Render mint nft screen.
+  
   return (
     <div className="mint-nft">
       <h1>Mint your free 🍪DAO Membership NFT</h1>
