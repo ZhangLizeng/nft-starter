@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from '../components/app';
 
 // Import thirdweb provider and Rinkeby ChainId
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
@@ -10,11 +8,10 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 const activeChainId = ChainId.Rinkeby;
 
 // Wrap your app with the thirdweb provider
-ReactDOM.render(
-  <React.StrictMode>
-    <ThirdwebProvider desiredChainId={activeChainId}>
-      <App />
-    </ThirdwebProvider>
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+export default function Home() {
+    return (< React.StrictMode >
+        <ThirdwebProvider desiredChainId={activeChainId} >
+            <App />
+        </ThirdwebProvider>
+    </React.StrictMode>);
+}
