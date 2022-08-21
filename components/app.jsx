@@ -1,11 +1,13 @@
 import { useAddress, useMetamask, useEditionDrop } from '@thirdweb-dev/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import Button from '@mui/material/Button';
+import { WalletContext } from '../components/walletProvider';
 
 const App = () => {
   // Use the hooks thirdweb give us.
-  const address = useAddress();
+  const walletContext = useContext(WalletContext);
   const connectWithMetamask = useMetamask();
-  console.log("👋 Address:", address);
+  console.log("👋 Address:", walletContext);
 
   // Initialize our editionDrop contract
   const editionDrop = useEditionDrop("0xf247244ae42FD3AD9bca8F480DD499F867fb8C72");
@@ -16,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     // If they don't have an connected wallet, exit!
-    if (!address) {
+    if (!walletContext) {
       return;
     }
 
@@ -36,7 +38,7 @@ const App = () => {
       }
     };
     checkBalance();
-  }, [address, editionDrop]);
+  }, [walletContext, editionDrop]);
 
   const mintNft = async () => {
     try {
@@ -54,13 +56,13 @@ const App = () => {
 
   // This is the case where the user hasn't connected their wallet
   // to your web app. Let them call connectWallet.
-  if (!address) {
+  if (!walletContext) {
     return (
       <div className="landing">
         <h1>Welcome to NarutoDAO</h1>
-        <button onClick={connectWithMetamask} className="btn-hero">
-          Connect your wallet
-        </button>
+        <Button variant="contained" onClick={connectWithMetamask}>
+          Connect wallet
+        </Button>
       </div>
     );
   }

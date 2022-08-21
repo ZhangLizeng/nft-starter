@@ -130,16 +130,3 @@ button {
     border-radius: 3rem;
     font-size: 1.2rem;
 }
-
-button:hover {
-    background-color: #121212;
-}
-
-button:focus {
-    background-color: #222;
-}
-
-button:disabled {
-    opacity: 0.8;
-    pointer-events: none;
-}
