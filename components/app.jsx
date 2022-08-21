@@ -24,7 +24,7 @@ const App = () => {
 
     const checkBalance = async () => {
       try {
-        const balance = await editionDrop.balanceOf(address, 0);
+        const balance = await editionDrop.balanceOf(walletContext, 0);
         if (balance.gt(0)) {
           setHasClaimedNFT(true);
           console.log("🌟 this user has a membership NFT!");
