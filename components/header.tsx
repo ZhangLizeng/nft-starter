@@ -12,15 +12,17 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { WalletContext } from './walletProvider';
 import { useMetamask } from '@thirdweb-dev/react';
-import { formatWallet  } from '../util/formatWallet';
+import { formatWallet } from '../util/formatWallet';
 import Link from 'next/link';
 
 const pages = [{
-  'name':'Listing',
-  'target': 'listing'},
-  {
-    'name': 'My collection',
-  'target': 'my_collection'}];
+  'name': 'Listing',
+  'target': 'listing'
+},
+{
+  'name': 'My collection',
+  'target': 'my_collection'
+}];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -123,16 +125,24 @@ const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link href={`/${page.target}`} key={page.name}>{page.name}</Link>
+              <Link href={page.target} key={page.name}>
+                <Button
+                  key={page.name}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
-          {!wallet &&  <Button variant="contained" onClick={connectWithMetamask}>
+          {!wallet && <Button variant="contained" onClick={connectWithMetamask}>
             Connect wallet
           </Button>}
 
-          {wallet &&  <Button variant="contained" sx={{ p: 0 }}>
-                {formatWallet(wallet)}
-              </Button>}
+          {wallet && <Button variant="contained" sx={{ p: 0 }}>
+            {formatWallet(wallet)}
+          </Button>}
         </Toolbar>
       </Container>
     </AppBar>
