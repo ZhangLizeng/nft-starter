@@ -15,14 +15,14 @@ const StyledCardMedia = styled(CardMedia)`
 const StyledButton = styled(Button)`
   border-radius: 0;
   position: absolute;
-  transition: bottom 0.25s ease-in-out 0s, visibility 0s ease 0.25s;
+  transition: bottom 0.25s ease-in-out 0s;
 `
 
 export default function ImgMediaCard(props) {
   const [mouseOver, setMouseOver] = useState(false)
 
   return (
-    <Card sx={{width:300}}
+    <Card sx={{width:300, borderRadius:3}}
     onMouseOver={()=>setMouseOver(true)} 
     onMouseOut={()=>setMouseOver(false)} 
     >
@@ -46,7 +46,7 @@ export default function ImgMediaCard(props) {
       </CardActionArea>
       <CardActions sx={{position: 'relative', padding: '0px', height: '36.5px'}}>
         <StyledButton variant="contained" fullWidth
-          sx={ mouseOver ? { bottom: '0px', visibility: 'visible'}: { bottom: '-50px', visibility: 'hidden'}}>
+          sx={ mouseOver ? { bottom: '0px' }: { bottom: '-50px' }}>
           Buy now
         </StyledButton>
       </CardActions>
